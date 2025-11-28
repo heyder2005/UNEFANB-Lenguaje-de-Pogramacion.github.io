@@ -7,7 +7,9 @@
     
     <style> 
 
-        body {
+
+
+body {
         font-family: Arial, sans-serif; position: center
         background- color: #121212;
         color: #ffffff;
@@ -58,15 +60,29 @@
             height: 200px;
 
         }
+        audio {
+           opacity: calc(10);
+        }
     </style>
     
        
     
     
     <body>
+        <audio controls autoplay loop>
+     <source src="sonido-de-fondo.mp3" type="audio/mpeg">
+    <source src="sonido-de-fondo.mp3" type="audio/ogg">
+     Tu navegador no soporta la etiqueta de audio.
+    </audio>
+
+        
+
+        
+
         <img src="fondo.png" alt="backgrond" class="imagen-background">
 
         <img src="LOGO.webp" alt="Logo de la UNEFA" class="imagen-logo"  width="150" height="200" >
+        
         
         
 
@@ -83,6 +99,8 @@
     <input type="reset" value="Limpiar">
 
     <p>¿No tienes cuenta? <a href="registro.html">"Regístrate aquí" </a></p>
+
+     
 
 
     <p><a href="recuperar_contraseña.html" target="_blank">¿Olvidaste tu contraseña?</a></p>
