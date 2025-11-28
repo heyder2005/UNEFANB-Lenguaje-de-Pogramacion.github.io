@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Heyder Briceño, Edgar Romero, Goura Peña, Kayzmel Mendoza y Manuel Useche">
+    <title>UNEFA - Iniciar Seccion</title>
+    
+    <style> 
+
+        body {
+        font-family: Arial, sans-serif; position:center;
+        margin: 0;
+        padding: 20px; }
+
+        .imagen-background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0%;
+            left: 0%;
+            filter: blur(10);
+            z-index: -1;
+        }
+    </style>
+    
+        <body>
+        <img src="fondo.jpg" alt="backgrond" class="imagen-background">
+
+        <img src="LOGO.webp" alt="Logo de la UNEFA" width="230" height="230">
+        
+        
+
+    <h1>Bienvenidos</h1>
+        <h2>Ingrese sus datos</h2>
+    <form action="procesar_login.php" method="post">
+        <label for="usuario">Usuario:</label>
+    <input type="text" id="usuario" name="usuario" required>
+    <label for="password">Contraseña:</label>
+    <input type="password" id="password" name="password" required>
+    <input type="submit" value="Iniciar seccion">
+    <input type="reset" value="Limpiar">
+    <p>¿No tienes cuenta? <a href="registro.html">"Regístrate aquí" </a></p>
+
+
+    <p><a href="recuperar_contraseña.html" target="_blank">¿Olvidaste tu contraseña?</a></p>
+    <hr>
+
+    <a href="https://github.com/heyder2005/UNEFANB-Lenguaje-de-Pogramacion.github.io.git"
+    target="_blank">Repositorio de los creadores</a>
+
+    </form>
+    </body>
+    </html>
+
+
+
+
+
+        
+    </body>
+
+</head>
+
+</html>
