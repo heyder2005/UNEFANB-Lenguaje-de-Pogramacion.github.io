@@ -2,16 +2,14 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <link href='https://cdn.boxicons.com/3.0.6/fonts/basic/boxicons.min.css' rel='stylesheet'>
     <meta name="author" content="Heyder Briceño, Edgar Romero, Goura Peña, Kayzmel Mendoza y Manuel Useche">
     <title>UNEFA - Iniciar Sesion</title>
     
-    <style> 
-
-
-
-body {
-        font-family: Arial, sans-serif; position: center
-        background- color: #121212;
+<style> 
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #121212;
         color: #ffffff;
         text-align: center;
         margin: 0;
@@ -19,27 +17,12 @@ body {
         height: 1px;color: #ffffff;
         height: 2px; color: #ffffff;
         padding : 10px; color: #ffffff;
-        padding : auto; color: #ffffff;
-    
-        a {
-  color: rgb(65, 192, 255);
-  text-decoration: none; }
-
-        form {
-        background-color: rgba(1, 11, 57, 0.7);
-        padding: 20px;
-        border-radius: 10px;
-        display: inline-block;
-        margin-top: 20px;
-
-        label {
-        display: block;
-        margin-bottom: 10px;
-        font-weight: bold;
-        text-align: left;
         }
-        
-    }
+
+        .imagen-logo{
+            position: center;
+
+        }
 
         .imagen-background {
             position: fixed;
@@ -47,79 +30,195 @@ body {
             height: 100%;
             top: 0%;
             left: 0%;
-            filter: blur(10);
-            z-index: -1;
+            filter: blur(10px);
+            z-index:-1;
+        }
+        
+       form {
+            background: transparent;
+            padding: 20px 10px;
+            border-radius: 12px;
+            box-shadow: 0 20px 20px rgba(0, 0, 0, 0.6);
+            width: 420px;
+        }
+        
+
+        .input-box {
+        margin: 15px 0;
+        position: relative;
+        width: 100%;
+        height: 50%;
+        }
+        .input-box input{
+        height: 50%;
+        width: 80%;
+        background: transparent;
+        border: none;
+        outline: none;
+        border: 2px solid rgba(255, 255, 255, .2);
+        border-radius: 40pxs;
+        font-size: 16px;
+        color: #fff;
+        padding: 20px 45px 20px 20px;
+        }
+
+        .input-box input::placeholder {
+        color: #fff;
+        font-weight: 500;
+        font-size: 16px;
+        padding-left: 20px;
+        }
+        .input-box i {
+        position: absolute;
+        right: 20px;
+        top: 30%;
+        transform: translate(-50%);
+        font-size: 20px;
+        color: #fff;
+        }
+        
+        .form .Recuérda-Contraseña{
+        display: flex;
+        justify-content: space-between;
+        font-size: 14.5px;
+        margin: -15px 0 15px 0;
+        color: #fff;
+        }
+        .Recuérda-Contraseña input{       
+        accent-color: #ffffff;
+        margin-right: 3px;
+        }
+        .Recuérda-Contraseña a{
+        color: #61f2ff;
+        text-decoration: none;
+        padding: 5%;
+        }
+        .Recuérda-Contraseña a:hover{
+        text-decoration: underline;
+        }
+        form .btn{
+        width: 60%;
+        height: 50px;
+        border: none;
+        outline: none;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+        background: #11086d;
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 70px;
+        cursor: pointer;
+        transition: .3s;
+        }
+        form .btn:hover {
+        background: #0d065a;
+        }
+        form .Inicia-sesion {
+        text-align: center;
+        margin-top: 20px 0 15px;
+        font-size: 14.5px;
+        color: #fff;
+        padding: 15px;
+        }
+        form .registrate-link {
+        text-align: center;
+        margin-top: 20px 0 15px;
+        font-size: 14.5px;
+        color: #fff;
+        padding: 15px;
+        }
+        form .registrate-link a {
+         color:#61f2ff;
+        text-decoration: none;
+        font-weight: 600;
+        }
+        form .registrate-link a:hover {
+        text-decoration: underline;
         }
 
         .imagen-logo {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            top: 10px;
-            width: 150px;
-            height: 200px;
+        position: center;
+        padding-right: 60%;
+        }
+        form .Repositorio a{
+            color: #61f2ff;
+            text-align: center;
+            margin-top: 20px 0 15px;
+            font-size: 15px;
+            padding: 20px;
+            
+        }
+        
 
+        .sonido-de-fondo {
+         position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0.1;
         }
-        audio {
-           opacity: calc(10);
-        }
+        .sonido-de-fondo audio {
+        width: 300px;
+     }
+    
+
+
     </style>
+</head>
     
-       
-    
-    
-    <body>
-        <audio controls autoplay loop>
-     <source src="sonido-de-fondo.mp3" type="audio/mpeg">
-    <source src="sonido-de-fondo.mp3" type="audio/ogg">
-     Tu navegador no soporta la etiqueta de audio.
-    </audio>
 
+<body>
         
-
-        
-
         <img src="fondo.png" alt="backgrond" class="imagen-background">
 
-        <img src="LOGO.webp" alt="Logo de la UNEFA" class="imagen-logo"  width="150" height="200" >
+        <div class="imagen-logo">
+        <img src="LOGO.webp" alt="Logo"  width="150px" height="200px"; >
+        </div>
+        
+        
+        <div class="sonido-de-fondo">
+        <audio controls autoplay loop playsinline>
+        <source src="sonido-de-fondo.mp3" type="audio/mpeg">
+        <source src="sonido-de-fondo.mp3" type="audio/ogg">
+        </audio>
+        </div>
         
         
         
+        
+        <div class="formulario"></div>
+        <form action="">
+            <div class="input-box">
+            <i class='bxr  bxs-user'></i> 
+            <input type="text" placeholder= "Usuario" required>
+            </div>
+            
+            <div class="input-box">
+            <i class='bxr  bxs-lock'></i>    
+            <input type="password" placeholder="Contraseña" required>
+            </div>
+            
+            <div class="Recuérda-Contraseña">
+            <label><input type="checkbox">Recuérdame</label>
+            <a href="#">Olvidaste tu contraseña?</a>
+        </div>
+        <div class="Inicia-sesion"></div>
+        <button type="submit" class="btn">Iniciar Sesion</button>
+        </div>
 
-    <h1>Bienvenidos</h1>
-    
-    <h2>Ingrese sus datos</h2>
-    
-    <form action="procesar_login.php" method="post">
-    <label for="usuario">Usuario:</label>
-    <input type="text" id="usuario" name="usuario" required>
-    <label for="password">Contraseña:</label>
-    <input type="password" id="password" name="password" required>
-    <input type="submit" value="Iniciar seccion">
-    <input type="reset" value="Limpiar">
+        <div class="registrate-link">
+            ¿No tienes una cuenta? <a href="#">Registrate</a>
+        </div>
 
-    <p>¿No tienes cuenta? <a href="registro.html">"Regístrate aquí" </a></p>
+        <div class="Repositorio">
+         <hr>   
+        <a href="https://github.com/heyder2005/UNEFANB-Lenguaje-de-Pogramacion.github.io.git"
+        target="_blank">Repositorio de los creadores </a> </hr>
+        </div>
 
-     
-
-
-    <p><a href="recuperar_contraseña.html" target="_blank">¿Olvidaste tu contraseña?</a></p>
-    <hr>
-
-    <a href="https://github.com/heyder2005/UNEFANB-Lenguaje-de-Pogramacion.github.io.git"
-    target="_blank">Repositorio de los creadores</a>
-
+        
+        
     </form>
-    </body>
-    </html>
-
-
-
-
-
-        
-    </body>
-
-</head>
+</body>
 
 </html>
