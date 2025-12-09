@@ -7,7 +7,7 @@
     <title>UNEFA - Iniciar Sesion</title>
     
 <style> 
-    body {
+    body{
         font-family: Arial, sans-serif;
         background-color: #120536;
         color: #ffffff;
@@ -25,7 +25,7 @@
             height: 100%;
             top: 0%;
             left: 0%;
-            filter: blur(0px);
+            filter: blur(1px);
             z-index:-1;
         }
         
@@ -34,8 +34,7 @@
             padding: 20px 10px;
             border-radius: 12px;
             box-shadow: 0 20px 20px rgba(0, 0, 0, 0.6);
-            width: 420px;
-        }
+            width: 420px;}
         
 
         .input-box {
@@ -162,20 +161,9 @@
             padding: 20px;
             text-decoration: none;
         }
-        
-
-        form .sonido-de-fondo {
-         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        opacity: 0.7;
-        autoplay: true;
+        form .Repositorio a:hover {
+            text-decoration: underline;
         }
-        .sonido-de-fondo audio {
-        width: 200px;
-        height: 150px;
-     }
     
 
 
@@ -221,7 +209,7 @@
          <img src="fondo.png" alt="backgrond" class="imagen-background">
        
         <div class="sonido-de-fondo">
-        <audio controls autoplay loop playsinline>
+        <audio autoplay loop>
         <source src="sonido-de-fondo.mp3" type="audio/mpeg">
         <source src="sonido-de-fondo.mp3" type="audio/ogg">
         </audio>
