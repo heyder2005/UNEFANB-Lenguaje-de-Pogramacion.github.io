@@ -9,20 +9,15 @@
 <style> 
     body {
         font-family: Arial, sans-serif;
-        background-color: #121212;
+        background-color: #120536;
         color: #ffffff;
         text-align: center;
-        margin: 0;
-        padding: 20px; 
+        margin: 10px;
         height: 1px;color: #ffffff;
         height: 2px; color: #ffffff;
         padding : 10px; color: #ffffff;
         }
-
-        .imagen-logo{
-            position: center;
-
-        }
+        
 
         .imagen-background {
             position: fixed;
@@ -30,7 +25,7 @@
             height: 100%;
             top: 0%;
             left: 0%;
-            filter: blur(10px);
+            filter: blur(0px);
             z-index:-1;
         }
         
@@ -135,30 +130,51 @@
         form .registrate-link a:hover {
         text-decoration: underline;
         }
-
-        .imagen-logo {
-        position: center;
-        padding-right: 60%;
+        form .imagen-logo {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+        padding: 10px;
         }
+        form .imagen-logo img {
+        width: 150px;
+        height: 200px;
+        border-radius: 100%;
+        position: center;
+        }
+        .imagen-logo{
+            position: center;
+            width: 150px;
+            height: 200%px;
+            margin: 0 auto;
+        }
+        .imagen-logo img{
+            border-radius: 100%;
+        }
+
+        
+        
         form .Repositorio a{
             color: #61f2ff;
             text-align: center;
             margin-top: 20px 0 15px;
             font-size: 15px;
             padding: 20px;
-            
+            text-decoration: none;
         }
         
 
-        .sonido-de-fondo {
+        form .sonido-de-fondo {
          position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        opacity: 0.1;
+        opacity: 0.7;
+        autoplay: true;
         }
         .sonido-de-fondo audio {
-        width: 300px;
+        width: 200px;
+        height: 150px;
      }
     
 
@@ -168,26 +184,12 @@
     
 
 <body>
-        
-        <img src="fondo.png" alt="backgrond" class="imagen-background">
-
-        <div class="imagen-logo">
-        <img src="LOGO.webp" alt="Logo"  width="150px" height="200px"; >
-        </div>
-        
-        
-        <div class="sonido-de-fondo">
-        <audio controls autoplay loop playsinline>
-        <source src="sonido-de-fondo.mp3" type="audio/mpeg">
-        <source src="sonido-de-fondo.mp3" type="audio/ogg">
-        </audio>
-        </div>
-        
-        
-        
-        
+               
         <div class="formulario"></div>
         <form action="">
+            <div class="imagen-logo">
+        <img src="LOGO.webp" alt="Logo" >
+        </div>
             <div class="input-box">
             <i class='bxr  bxs-user'></i> 
             <input type="text" placeholder= "Usuario" required>
@@ -214,10 +216,16 @@
          <hr>   
         <a href="https://github.com/heyder2005/UNEFANB-Lenguaje-de-Pogramacion.github.io.git"
         target="_blank">Repositorio de los creadores </a> </hr>
+        </div>                  
+        
+         <img src="fondo.png" alt="backgrond" class="imagen-background">
+       
+        <div class="sonido-de-fondo">
+        <audio controls autoplay loop playsinline>
+        <source src="sonido-de-fondo.mp3" type="audio/mpeg">
+        <source src="sonido-de-fondo.mp3" type="audio/ogg">
+        </audio>
         </div>
-
-        
-        
     </form>
 </body>
 
