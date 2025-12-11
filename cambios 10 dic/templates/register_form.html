@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro - UNEFA</title>
+    <style>
+
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #120536; 
+            color: #ffffff; 
+            text-align: center; 
+            padding-top: 50px;
+        }
+        form {
+            background: #200d5a;
+            padding: 30px;
+            border-radius: 12px;
+            width: 350px;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+        }
+        input[type="text"], input[type="password"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #61f2ff;
+            background: #0d065a;
+            color: white;
+        }
+        button {
+            background: #61f2ff;
+            color: #120536;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        a { color: #61f2ff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <h1>Crear Nueva Cuenta</h1>
+    
+    <form action="/register" method="POST">
+        <label for="username">Nombre de Usuario:</label><br>
+        <input type="text" id="username" name="username" placeholder="Cree un nombre de usuario" required><br><br>
+        
+        <label for="password">Contraseña:</label><br>
+        <input type="password" id="password" name="password" placeholder="Cree una contraseña" required><br><br>
+        
+        <button type="submit">Registrar</button>
+    </form>
+    
+    <p style="margin-top: 20px;"><a href="/">Ya tengo una cuenta (Volver al inicio)</a></p>
+</body>
+</html>
