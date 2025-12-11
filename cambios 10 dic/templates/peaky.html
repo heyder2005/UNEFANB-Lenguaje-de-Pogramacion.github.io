@@ -190,14 +190,14 @@
             
             <div class="Recuérda-Contraseña">
             <label><input type="checkbox">Recuérdame</label>
-            <a href="#">Olvidaste tu contraseña?</a>
-        </div>
+           <a href="{{ url_for('forgot_password') }}">Olvidaste tu contraseña?</a> 
+     </div>
         <div class="Inicia-sesion"></div>
         <button type="submit" class="btn">Iniciar Sesion</button>
     </form>
 
         <div class="registrate-link">
-            ¿No tienes una cuenta? <a href="#">Registrate</a>
+    ¿No tienes una cuenta? <a href="{{ url_for('register_page') }}">Registrate</a>
         </div>
 
         <div class="Repositorio">
