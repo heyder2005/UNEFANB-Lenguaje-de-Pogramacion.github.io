@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Horario para imprimir — {{ user }} ({{ role }})</h2>
+<table class="horario print">
+  <thead><tr><th>Hora / Día</th>{% for d in DIAS %}<th>{{ d }}</th>{% endfor %}</tr></thead>
+  <tbody>
+    {% for label in HORAS_LABELS %}
+      {% set h_idx = loop.index0 %}
+      <tr>
+        <td>{{ label }}</td>
+        {% for dia in DIAS %}
+          {% set d_idx = loop.index0 %}
+          {% set celda = matriz[d_idx][h_idx] %}
+          <td>
+            {% if celda %}
+              <strong>{{ celda.materia_id }}</strong><br>
+              <small>{{ celda.docente_id }}</small>
+            {% else %}
+              -
+            {% endif %}
+          </td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<button onclick="window.print()">Imprimir horario</button>
+{% endblock %}
+

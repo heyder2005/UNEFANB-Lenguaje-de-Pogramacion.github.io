@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Crear Nueva Cuenta</h2>
+<form action="{{ url_for('register_page') }}" method="POST">
+  <input type="text" name="username" placeholder="Nombre de usuario" required>
+  <input type="password" name="password" placeholder="Contraseña" required>
+  <label>Rol
+    <select name="role">
+      <option value="estudiante">Estudiante</option>
+      <option value="docente">Docente</option>
+      <option value="coordinador">Coordinador</option>
+    </select>
+  </label>
+  <button type="submit">Registrar</button>
+</form>
+{% endblock %}

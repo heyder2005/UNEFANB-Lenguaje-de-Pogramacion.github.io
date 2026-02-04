@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Coordinador</h2>
+
+<section>
+  <h3>Asignar materia a docente</h3>
+  <form method="post">
+    <input type="hidden" name="action" value="asignar">
+    <label>Docente
+      <select name="docente_id">
+        {% for dname in docentes.keys() %}
+          <option value="{{ dname }}">{{ dname }}</option>
+        {% endfor %}
+      </select>
+    </label>
+    <label>Materia
+      <select name="materia_id">
+        {% for dname, mats in docentes.items() %}
+          {% for mid in mats.keys() %}
+            <option value="{{ mid }}">{{ mid }} ({{ dname }})</option>
+          {% endfor %}
+        {% endfor %}
+      </select>
+    </label>
+    <label>Día
+      <select name="dia_idx">{% for d in DIAS %}<option value="{{ loop.index0 }}">{{ d }}</option>{% endfor %}</select>
+    </label>
+    <label>Hora inicio
+      <select name="hora_start">{% for _ in HORAS_STARTS %}<option value="{{ loop.index0 }}">{{ HORAS_LABELS[loop.index0].split(' - ')[0] }}</option>{% endfor %}</select>
+    </label>
+    <label>Hora fin (no incluida)
+      <select name="hora_end">{% for _ in HORAS_STARTS %}<option value="{{ loop.index0 + 1 }}">{{ HORAS_LABELS[loop.index0] }}</option>{% endfor %}</select>
+    </label>
+    <button type="submit">Asignar</button>
+  </form>
+</section>
+
+<section>
+  <h3>Retirar asignación</h3>
+  <form method="post">
+    <input type="hidden" name="action" value="retirar">
+    <label>Día
+      <select name="dia_idx">{% for d in DIAS %}<option value="{{ loop.index0 }}">{{ d }}</option>{% endfor %}</select>
+    </label>
+    <label>Hora
+      <select name="hora_idx">{% for _ in HORAS_STARTS %}<option value="{{ loop.index0 }}">{{ HORAS_LABELS[loop.index0] }}</option>{% endfor %}</select>
+    </label>
+    <button type="submit">Retirar</button>
+  </form>
+</section>
+
+<section>
+  <h3>Matriz de horario</h3>
+  <table class="horario">
+    <thead><tr><th>Hora / Día</th>{% for d in DIAS %}<th>{{ d }}</th>{% endfor %}</tr></thead>
+    <tbody>
+      {% for label in HORAS_LABELS %}
+        {% set h_idx = loop.index0 %}
+        <tr>
+          <td>{{ label }}</td>
+          {% for dia in DIAS %}
+            {% set d_idx = loop.index0 %}
+            {% set celda = matriz[d_idx][h_idx] %}
+            <td>
+              {% if celda %}
+                <strong>{{ celda.materia_id }}</strong><br>
+                <small>Doc: {{ celda.docente_id }}</small><br>
+                <small>Inscritos: {{ celda.estudiantes|length }}</small>
+              {% else %}
+                Libre
+              {% endif %}
+            </td>
+          {% endfor %}
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<a href="{{ url_for('imprimir') }}">Imprimir horario</a>
+{% endblock %}

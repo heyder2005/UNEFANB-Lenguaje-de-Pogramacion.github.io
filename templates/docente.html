@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Docente: {{ user }}</h2>
+
+<section>
+  <h3>Agregar materia</h3>
+  <form method="post">
+    <input type="hidden" name="action" value="add_materia">
+    <label>Id materia <input name="materia_id" required></label>
+    <label>Descripción <input name="descripcion"></label>
+    <button type="submit">Agregar materia</button>
+  </form>
+</section>
+
+<section>
+  <h3>Mis materias</h3>
+  {% if materias %}
+    <ul>
+      {% for mid, m in materias.items() %}
+        <li>
+          <strong>{{ mid }}</strong> — {{ m.descripcion or '' }}
+          <form method="post" style="display:inline">
+            <input type="hidden" name="action" value="remove_materia">
+            <input type="hidden" name="materia_id" value="{{ mid }}">
+            <button type="submit">Eliminar materia</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No tienes materias registradas.</p>
+  {% endif %}
+</section>
+
+<section>
+  <h3>Agregar disponibilidad (rango por franjas de 1)</h3>
+  <form method="post">
+    <input type="hidden" name="action" value="add_disponibilidad_range">
+
+    <label>Seleccionar materia
+      <select name="materia_id_sel" required>
+        <option value="">-- seleccionar --</option>
+        {% for mid in materias.keys() %}
+          <option value="{{ mid }}">{{ mid }}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>Día
+      <select name="dia_idx">
+        {% for d in DIAS %}
+          <option value="{{ loop.index0 }}">{{ d }}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>Hora inicio
+      <select name="hora_start">
+        {% for _ in HORAS_STARTS %}
+          <option value="{{ loop.index0 }}">{{ HORAS_LABELS[loop.index0].split(' - ')[0] }}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>Hora fin (no incluida) — unidad mínima: 1 franja
+      <select name="hora_end">
+        {% for _ in HORAS_STARTS %}
+          <option value="{{ loop.index0 + 1 }}">{{ HORAS_LABELS[loop.index0] }}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <button type="submit">Agregar rango</button>
+  </form>
+  <p class="help">Nota: selecciona una materia registrada. El rango se mide en franjas (cada franja = 45 minutos).</p>
+</section>
+
+<section>
+  <h3>Mi disponibilidad (rangos)</h3>
+  {% if disponibilidad %}
+    <table>
+      <thead><tr><th>Materia</th><th>Día</th><th>Inicio</th><th>Fin</th><th>Acción</th></tr></thead>
+      <tbody>
+        {% for d in disponibilidad %}
+          <tr>
+            <td>{{ d.materia_id }}</td>
+            <td>{{ DIAS[d.dia_idx] }}</td>
+            <td>{{ HORAS_LABELS[d.hora_start].split(' - ')[0] }}</td>
+            <td>{{ HORAS_LABELS[d.hora_end - 1].split(' - ')[1] }}</td>
+            <td>
+              <form method="post" style="display:inline">
+                <input type="hidden" name="action" value="remove_disponibilidad_range">
+                <input type="hidden" name="materia_id_sel" value="{{ d.materia_id }}">
+                <input type="hidden" name="dia_idx" value="{{ d.dia_idx }}">
+                <input type="hidden" name="hora_start" value="{{ d.hora_start }}">
+                <input type="hidden" name="hora_end" value="{{ d.hora_end }}">
+                <button type="submit">Quitar</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No hay disponibilidad registrada.</p>
+  {% endif %}
+</section>
+
+<a href="{{ url_for('imprimir') }}">Imprimir horario</a>
+{% endblock %}

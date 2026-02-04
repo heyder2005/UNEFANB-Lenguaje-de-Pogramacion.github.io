@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Estudiante: {{ session.user }}</h2>
+
+<section>
+  <h3>Materias ofertadas</h3>
+  {% if ofertas %}
+    <table class="horario">
+      <thead>
+        <tr><th>Materia</th><th>Docente</th><th>Día</th><th>Horario</th><th>Acción</th></tr>
+      </thead>
+      <tbody>
+        {% for o in ofertas %}
+          <tr>
+            <td>{{ o.materia_id }}</td>
+            <td>{{ o.docente_id }}</td>
+            <td>{{ DIAS[o.dia_idx] }}</td>
+            <td>{{ o.hora_label }}</td>
+            <td>
+              <form method="post" style="display:inline">
+                <input type="hidden" name="action" value="inscribir_oferta">
+                <input type="hidden" name="oferta_id" value="{{ o.id }}">
+                <button type="submit">Inscribirme</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No hay materias ofertadas en este momento.</p>
+  {% endif %}
+</section>
+
+<section style="margin-top:20px;">
+  <h3>Solicitar materia (si no aparece en la lista)</h3>
+  <form method="post">
+    <input type="hidden" name="action" value="solicitar_materia">
+    <label>Id materia <input name="materia_id" required></label>
+    <button type="submit">Enviar solicitud</button>
+  </form>
+</section>
+
+<a href="{{ url_for('imprimir') }}">Imprimir horario</a>
+{% endblock %}

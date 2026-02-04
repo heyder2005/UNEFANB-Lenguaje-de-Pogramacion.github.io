@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>UNEFA - Gestor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="{{ url_for('inicio') }}">
+        <img src="{{ url_for('static', filename='css/images/logo.webp') }}" alt="UNEFA" class="logo">
+      </a>
+      <nav class="main-nav">
+        <a href="{{ url_for('inicio') }}">Inicio</a>
+        {% if session.get('user') %}
+          <span class="user-info">{{ session.user }} • {{ session.role }}</span>
+          <a href="{{ url_for('logout') }}">Cerrar sesión</a>
+        {% else %}
+          <a href="{{ url_for('register_page') }}">Registrarse</a>
+        {% endif %}
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash-list">
+          {% for m in messages %}
+            <div class="flash">{{ m }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer">
+    <small>UNEFA • Gestor de Horarios</small>
+  </footer>
+</body>
+</html>
